@@ -12,21 +12,28 @@ class SplashScreenCubit extends Cubit<SplashScreenState> {
 
   Future checkInternet() async {
     final connection = await InternetConnection().hasInternetAccess;
+
     switch (connection) {
       case true:
-        ConnectionActivityState(status: CheckStatus.seccess);
-      case false:
-        ConnectionActivityState(status: CheckStatus.failure);
+        emit(ConnectionActivityState(status: CheckStatus.seccess));
         break;
-      }
-  }
-  
-  Future checkFirestoreBase() async{
-    final uid = FirebaseAuth.instance.currentUser!.uid;
-    await FirebaseFirestore.instance.collection(uid).limit(1).get().timeout(Duration(seconds: 10));
+
+      case false:
+        emit(ConnectionActivityState(status: CheckStatus.failure));
+        break;
+    }
   }
 
-  Future checkLocal() async{
+  Future checkFirestoreBase() async {
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+    await FirebaseFirestore.instance
+        .collection(uid)
+        .limit(1)
+        .get()
+        .timeout(Duration(seconds: 10));
+  }
+
+  Future checkLocal() async {
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, 'click.db');
     final db = await openDatabase(path, version: 1);
@@ -55,7 +62,7 @@ class SplashScreenCubit extends Cubit<SplashScreenState> {
     await Future.delayed(Duration(milliseconds: 700));
   }
 
-  Future checkAll() async{
+  Future checkAll() async {
     await runCheck(
       checking: ConnectionActivityState(status: CheckStatus.checking),
       success: ConnectionActivityState(status: CheckStatus.seccess),
