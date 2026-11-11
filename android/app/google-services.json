@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "697608204892",
+    "project_id": "qlickauth",
+    "storage_bucket": "qlickauth.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:697608204892:android:578d4ca34f5c501b696c99",
+        "android_client_info": {
+          "package_name": "com.example.qlick"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiefh5v4BBLeY-YohiKUK-5NpU95TFLgg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
