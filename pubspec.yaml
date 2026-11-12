@@ -53,6 +53,7 @@ dependencies:
   google_fonts: ^9.0.0
   linear_progress_bar: ^3.0.0
   internet_connection_checker_plus: ^3.1.2
+  hugeicons: ^0.0.11
 
 dev_dependencies:
   flutter_test:
